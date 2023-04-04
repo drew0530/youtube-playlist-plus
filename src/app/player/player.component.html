@@ -1,1 +1,17 @@
-<youtube-player [videoId]="videoId"></youtube-player>
+<div fxLayout="column" fxLayoutGap="8px">
+  <div id="player"></div>
+  <mat-card>
+      <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+          <mat-form-field>
+              <mat-label>Size</mat-label>
+              <mat-select [formControl]="videoSizeControl" (selectionChange)="onPlayerSizeChange()">
+                  <mat-option *ngFor="let size of playerSize" [value]="size">
+                      {{ size.height }} x {{ size.width }}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <button mat-stroked-button (click)="previousVideo()">Previous</button>
+          <button mat-stroked-button (click)="nextVideo()">Next</button>
+      </mat-card-content>
+  </mat-card>
+</div>
